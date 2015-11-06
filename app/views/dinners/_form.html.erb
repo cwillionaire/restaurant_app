@@ -1,0 +1,25 @@
+<%= form_for(@dinner) do |f| %>
+  <% if @dinner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dinner.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @dinner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :food_name %><br>
+    <%= f.text_field :food_name %>
+  </div>
+  <div class="fie ld form-group">
+    <%= f.label "Menu Item" %><br>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

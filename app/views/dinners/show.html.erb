@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <%= @dinner.food_name %>
+    </div>
+<div class="panel-body">
+  <p><%= image_tag @dinner.avatar.url(:medium), class: "img-responsive" %></p>
+  </div>
+</div>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Make a Comment
+  </div>
+  <div class="panel-body">
+    <%= render 'comments/form' %>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-header">
+    <h4>Comments</h4>
+  </div>
+  <% @dinner.comments.each do |comment| %>
+  <div class="panel-body">
+    <p>
+    <% "#{comment.rating}".to_i.times do %>
+    <span class="glyphicon glyphicon-star"></span>
+    <% end %>
+    </p>
+    <p><strong><%= comment.user.username %></strong> said: </p>
+    <p><%= comment.comment_entry %></p>
+    <p><%= comment.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
+  </div>
+  <%end%>
+</div>
+
+<div>
+<%= link_to 'Edit', edit_dinner_path(@dinner) %> |
+<%= link_to 'Back', dinners_path %>
+</div>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Dinners</h1>
+
+  <div class="row">
+    <% @dinners.each do |dinner| %>
+      <div class="col-sm-6">
+       <div class="panel panel-default">
+        <div class="panel-heading">
+         <h2><%= link_to dinner.food_name, dinner %></h2>
+         <div class = "panel-body">
+             <p><%= image_tag dinner.avatar.url(:medium), class: "img-responsive" %></p>
+         </div>
+         <div class="btn-footer">
+             <p>
+          <%= link_to 'Edit', edit_dinner_path(dinner), class: "btn btn-warning" %>
+          <%= link_to 'Destroy', dinner, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+         </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'New Dinner', new_dinner_path %>
